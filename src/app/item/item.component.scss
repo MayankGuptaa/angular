@@ -1,0 +1,16 @@
+li {
+    list-style: none;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    padding: 10px 15px;
+    width: 200px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    &:hover{
+        background: #eee;
+    }
+}
+
+.actList {
+    border: 2px solid red;
+}

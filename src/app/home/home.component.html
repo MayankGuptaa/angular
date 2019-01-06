@@ -1,0 +1,92 @@
+<h1>Home</h1>
+
+<!-- <app-item></app-item> -->
+
+
+
+<div class="tabs">
+  <span [ngClass]="{'active' : tab1 === true}">Tab1</span>
+  <span [class.active]="tab2 === true">Tab2</span>
+  <span [class.active]="tab3 === true">Tab3</span>
+</div>
+
+  <!-- Tab 1-->
+  <form [formGroup]="step1Form" *ngIf="tab1">
+      <p>
+        <label>Name 1</label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Name 1" formControlName="name1">
+            <mat-error *ngIf="step1Form.controls.name1.errors">
+              <span *ngIf="step1Form.controls.name1.errors">Enter Your Name 1</span>
+            </mat-error>
+        </mat-form-field>
+      </p>   
+
+      <p>
+          <label>Name 2</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Name 2" formControlName="name2">
+              <mat-error *ngIf="step1Form.controls.name2.errors">
+                <span *ngIf="step1Form.controls.name2.errors">Enter Your Name 2</span>
+              </mat-error>
+          </mat-form-field>
+        </p>  
+
+        <button (click)="tabBtn1()" mat-raised-button color="primary">Next</button>
+      </form>
+
+    <!-- Tab 2 -->
+       <form [formGroup]="step2Form"  *ngIf="tab2">  
+        <p>
+            <label>Name 3</label>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Name 3" formControlName="name3">
+                <mat-error *ngIf="step2Form.controls.name3.errors">
+                  <span *ngIf="step2Form.controls.name3.errors">Enter Your Name 3</span>
+                </mat-error>
+            </mat-form-field>
+          </p>  
+
+          <p>
+              <label>Name 4</label>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="Name 4" formControlName="name4">
+                  <mat-error *ngIf="step2Form.controls.name4.errors">
+                    <span *ngIf="step2Form.controls.name4.errors">Enter Your Name 4</span>
+                  </mat-error>
+              </mat-form-field>
+            </p>  
+            
+            <button (click)="backTab1()" mat-raised-button color="warn">Back</button>
+            <button (click)="tabBtn2()" mat-raised-button color="primary">Next</button>
+          </form>
+
+        <!-- Tab 3 -->
+        <form [formGroup]="step3Form"  *ngIf="tab3">
+            <p>
+                <label>Name 5</label>
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Name 5" formControlName="name5">
+                    <mat-error *ngIf="step3Form.controls.name5.errors">
+                      <span *ngIf="step3Form.controls.name5.errors">Enter Your Name 5</span>
+                    </mat-error>
+                </mat-form-field>
+              </p>  
+
+              <p>
+                  <label>Name 6</label>
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Name 6" formControlName="name6">
+                      <mat-error *ngIf="step3Form.controls.name6.errors">
+                        <span *ngIf="step3Form.controls.name6.errors">Enter Your Name 6</span>
+                      </mat-error>
+                  </mat-form-field>
+                </p>  
+
+                <button (click)="backTab2()" mat-raised-button color="warn">Back</button>
+            <button  mat-raised-button (click)="onSubmit(step1Form.value,step2Form.value,step3Form.value)">Submit</button>
+
+              </form>
+            <!---->
+
+       

@@ -1,0 +1,7 @@
+
+<ul>
+  <li [class.actList]="data.id === currentRoute"
+   routerLink="/item-list/{{data.id}}" *ngFor="let data of items; let index = index">
+    {{index + 1}} : {{data.title}}</li>
+
+</ul>
