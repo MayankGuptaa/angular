@@ -1,1 +1,21 @@
+
 <router-outlet></router-outlet>
+
+<form>
+
+<input type="text" name="user" [(ngModel)]="user" >
+<input type="text" name="room" [(ngModel)]="room">
+
+<button type="submit" (click)="join()">Join</button>
+ 
+</form>
+<button (click)="leave()">Leave Room</button>
+
+<ul >
+<li *ngFor="let data of message"><strong>{{data.user}}:</strong> {{data.message}} </li>
+</ul>
+
+<form>
+  <input type="text" name="messagetext" [(ngModel)]="messagetext">
+  <button type="submit" (click)="sendMessage()"> Send</button>
+</form>

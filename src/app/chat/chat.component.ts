@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../../services/http.service';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -8,16 +8,39 @@ import { HttpService } from '../../services/http.service';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private http: HttpService) { }
+    message: any = [];
+    messagetext = '';
+
+    constructor(private chat: ChatService) {
+      this.chat.newUserJoined().subscribe(data => {
+        this.message.push(data);
+      });
+      this.chat.userLeftRoom().subscribe(data => {
+        this.message.push(data);
+      });
+      this.chat.newMessageReceived().subscribe(data => {
+        this.message.push(data);
+      });
+    }
+
+    user: String;
+    room: String;
+
+    join() {
+      this.chat.joinRoom({user: this.user, room: this.room });
+    }
+
+    leave() {
+      console.log('leave');
+      this.chat.leaveRoom({user: this.user, room: this.room });
+    }
+
+    sendMessage() {
+      this.chat.sendMessage({user: this.user, room: this.room, message: this.messagetext});
+    }
+
+    ngOnInit() {
+    }
 
 
-  getChatData () {
-    this.http.GET('', {}).subscribe( req => {
-      console.log(req);
-    });
   }
-
-  ngOnInit() {
-  }
-
-}

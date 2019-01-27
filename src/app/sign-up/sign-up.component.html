@@ -1,0 +1,15 @@
+
+<input type="number" [(ngModel)]="value1" #ctrl="ngModel" placeholder="value" >
+<input type="number" [(ngModel)]="value2" #ctrl2="ngModel" placeholder="value">
+
+
+<select [(ngModel)]="value3" #ctrl3="ngModel">
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+        <option value="multiply">Multiply</option>
+        <option value="devaid">Devaid</option>
+</select>
+
+<button type="button" (click)="cal(value1,value2, value3)">Calculator</button>
+
+<h1>{{answer}}</h1>

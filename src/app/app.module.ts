@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpService } from '../services/http.service';
+import { HttpService } from './services/http.service';
 
 import { ChatComponent } from '../app/chat/chat.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -17,13 +17,22 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
-
+import 'hammerjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { ItemComponent } from './item/item.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule} from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
+
+import { ChatService } from './services/chat.service';
+
+import { httpRequestInterceptorProviders } from './services/interceptor';
 
 @NgModule({
   declarations: [
@@ -34,9 +43,16 @@ import {MatButtonModule} from '@angular/material/button';
     AccordionComponent,
     ItemComponent,
     ItemDetailComponent
+
   ],
   imports: [
-    FormsModule, ReactiveFormsModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatSliderModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     BrowserModule,
@@ -48,7 +64,11 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [HttpService],
+  providers: [
+    HttpService,
+    httpRequestInterceptorProviders,
+    ChatService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

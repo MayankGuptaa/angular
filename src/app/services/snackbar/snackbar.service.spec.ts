@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WebsocketService } from './websocket.service';
+import { SnackbarService } from './snackbar.service';
 
-describe('WebsocketService', () => {
+describe('SnackbarService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: WebsocketService = TestBed.get(WebsocketService);
+    const service: SnackbarService = TestBed.get(SnackbarService);
     expect(service).toBeTruthy();
   });
 });

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_PATH  : 'https://cbz-api.herokuapp.com/api/v1/',
+  API_PATH  : 'http://localhost:3000/api/',
   APP_ID    : 'angular-chat'
 };
 
