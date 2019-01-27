@@ -11,6 +11,8 @@
 </form>
 <button (click)="leave()">Leave Room</button>
 
+<h1>{{noti}}</h1>
+
 <ul >
 <li *ngFor="let data of message"><strong>{{data.user}}:</strong> {{data.message}} </li>
 </ul>

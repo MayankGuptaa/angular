@@ -8,6 +8,8 @@ import { ChatService } from './services/chat.service';
 })
 export class AppComponent implements OnInit {
 
+  noti = 0;
+
   message: any = [];
   messagetext = '';
 
@@ -20,6 +22,7 @@ export class AppComponent implements OnInit {
     });
     this.chat.newMessageReceived().subscribe(data => {
       this.message.push(data);
+      this.noti += 1;
     });
   }
 
@@ -36,8 +39,11 @@ export class AppComponent implements OnInit {
   }
 
   sendMessage() {
+    if ( this.messagetext !== '') {
     document.querySelector('ul').scrollTop = 9999999;
     this.chat.sendMessage({user: this.user, room: this.room, message: this.messagetext});
+    this.messagetext = '';
+    }
   }
 
   ngOnInit() {
